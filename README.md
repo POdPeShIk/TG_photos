@@ -9,3 +9,18 @@
 
 ## Использование 
 Программа должна принимать параметры для указания имени канала Telegram, для указания времени (1 раз за указанное время будет отправляться фотография), токен вашего бота, api_key для скачивания фотографий с сайта SpaceX. Все это можно указать в папке .env
+
+## Примеры запуска
+tg.py:
+```python tg.py --path images/APOD/image_apod_1.jpg```
+
+epic.py:
+```python epic.py --date 2023-10-2 ```
+
+apod.py:
+``` python apod.py --date 2023-10-2```
+
+fetch_spacex_images.py:
+``` python fetch_spacex_images.py --id 5eb87d47ffd86e000604b38a```
+
+
