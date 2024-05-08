@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import time
 import requests
 import random
+import argparse
 
 
 def send_photo(chat_id, photo_path):
@@ -15,18 +16,16 @@ def send_photo(chat_id, photo_path):
     return json_response
 
 
-def go(xtime):
-    directory = os.environ["DIRECTORY"] #Выберите папку
+def go(chat_id, xtime):
+    directory = os.environ["DIRECTORY"] #Выберите папку (Если хотите рандомное фото из папки)
     photos = os.listdir(directory)
     xtime=xtime*3600
-    random.shuffle(photos)
     while True:
+        random.shuffle(photos)
         for photo in photos:
-            path=directory+photo
-            send_photo(chat_id, path)
+            xpath=directory+photo
+            send_photo(chat_id, xpath)
             time.sleep(xtime)
-
-
 
 
 if __name__ == "__main__":
@@ -35,4 +34,15 @@ if __name__ == "__main__":
     xtime=int(os.environ["XTIME"])
     chat_id= "@testingmain"
     bot = telegram.Bot(token="7023144175:AAFNrL2XdYfO1olmN8gDxc7py26eInzOw6g")
-    go(xtime)
+    parser = argparse.ArgumentParser(
+        description='Описание что делает программа'
+    )
+    parser.add_argument('--path', help='Path of photo')
+    args = parser.parse_args()
+    if args.path == None:
+        go(chat_id,xtime)
+    else:
+        path = args.path
+        print(path)
+        send_photo(chat_id, path)
+        go(chat_id,xtime)
