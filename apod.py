@@ -1,5 +1,6 @@
 import requests
 import os
+import argparse
 from dotenv import load_dotenv
 
 
@@ -12,7 +13,9 @@ def get_links(api_key):
     return links
 
 
-def thirty_links(api_key):
+def thirty_links(api_key, date = "today"):
+    payload={"api_key": api_key,
+        "date": date}
     links= get_links(api_key)
     links = links.json()
     counter = 0
@@ -24,6 +27,17 @@ def thirty_links(api_key):
 
 
 if __name__ == "__main__":
-    load_dotenv(".env")
+    load_dotenv()
     api_key=os.environ['API_KEY']
-    thirty_links(api_key)
+    parser = argparse.ArgumentParser(
+        description='Описание что делает программа'
+    )
+    parser.add_argument('--date', help='YYYY-MM-DD')
+    args = parser.parse_args()
+    if args.date == None:
+        thirty_links(api_key)
+    else:
+        date = args.date
+        print(date)
+        thirty_links(api_key,date)
+
