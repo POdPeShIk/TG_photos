@@ -18,9 +18,12 @@ epic.py:
 ```python epic.py --date 2023-10-2 ```
 
 apod.py:
-``` python apod.py --date 2023-10-2```
+```python apod.py --date 2023-10-2```
 
 fetch_spacex_images.py:
-``` python fetch_spacex_images.py --id 5eb87d47ffd86e000604b38a```
+```python fetch_spacex_images.py --id 5eb87d47ffd86e000604b38a```
+
+main.py:
+```python main.py```
 
 
