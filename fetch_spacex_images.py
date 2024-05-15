@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 def get_spacex_photos(ids= "5eb87d47ffd86e000604b38a"):
     if ids =="5eb87d47ffd86e000604b38a":
         response = requests.get(f"https://api.spacexdata.com/v4/launches/{ids}")
-        print(response)
     else:
         payload = {"flight_id": ids}
         response = requests.get(f"https://api.spacexdata.com/v4/launches", params=payload)
