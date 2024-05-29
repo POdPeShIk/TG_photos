@@ -3,7 +3,6 @@ import os
 import argparse
 from dotenv import load_dotenv
 
-
 from save_file import save
 
 
@@ -23,21 +22,22 @@ def thirty_links(api_key, date = "today"):
         image_url = link["url"]
         counter += 1
         filename=f"apod_{counter}"
-        save(image_url , filename, "APOD")
+        save(image_url , filename, "APOD",api_key)
 
 
 if __name__ == "__main__":
     load_dotenv()
-    api_key=os.environ['API_KEY']
+    api_key=os.environ['NASA_API_KEY']
     parser = argparse.ArgumentParser(
         description='Описание что делает программа'
     )
     parser.add_argument('--date', help='YYYY-MM-DD')
     args = parser.parse_args()
-    if args.date == None:
-        thirty_links(api_key)
-    else:
+    if args.date:
         date = args.date
         print(date)
         thirty_links(api_key,date)
+    else:
+        thirty_links(api_key)
+
 

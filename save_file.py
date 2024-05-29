@@ -1,6 +1,8 @@
+import pathlib
 import requests
 import os.path
 from urllib.parse import urlparse
+from pathlib import *
 
 
 def format(url):
@@ -9,12 +11,12 @@ def format(url):
     extension = os.path.splitext(path)[1]
     return extension
 
-def save(url,filename,path_name):
-    os.makedirs(f"images/{path_name}", exist_ok=True)
-    api_key=os.environ['API_KEY']
+def save(url,filename,path_name,api_key):
+    os.makedirs(pathlib.Path(f"images/{path_name}"), exist_ok=True)
     payload = {"api_key":api_key }
     response = requests.get(url,  params=payload)
     response.raise_for_status()
     extension = format(url)
-    with open(f"images/{path_name}/image_{filename}{extension}", 'wb') as file:
+    path_two=pathlib.Path(f"images/{path_name}/image_{filename}{extension}")
+    with open(f'{path_two}', 'wb') as file:
         file.write(response.content)
