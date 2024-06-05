@@ -29,6 +29,12 @@ WAITING_TIME=<ваше время>
 ```
 TELEGRAM_TOKEN=<ваш токен>
 ```
+ID отправки корабля:
+```
+LAUNCH_ID=<ID>
+```
+
+
 
 Api_key для скачивания фотографий с сайта SpaceX(его можно сгенерировать на сайте NASA):
 ```
@@ -47,27 +53,27 @@ URL=f'https://api.telegram.org/<токен вашего бота>/sendPhoto'
 
 ## Примеры запуска
 tg.py:
-```
+```angular2html
 python tg.py --path images/APOD/image_apod_1.jpg
 ```
 
 epic.py:
-```
+```angular2html
 python epic.py --date 2023-10-2 
 ```
 
 apod.py:
-```
+```angular2html
 python apod.py --date 2023-10-2
 ```
 
 fetch_spacex_images.py:
-```
+```angular2html
 python fetch_spacex_images.py --id 5eb87d47ffd86e000604b38a
 ```
 
 main.py:
-```
+```angular2html
 python main.py
 ```
 

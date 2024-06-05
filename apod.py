@@ -12,7 +12,7 @@ def get_links(api_key):
     return links
 
 
-def thirty_links(api_key, date = "today"):
+def get_thirty_links(api_key, date = "today"):
     payload={"api_key": api_key,
         "date": date}
     links= get_links(api_key)
@@ -35,8 +35,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.date:
         date = args.date
-        thirty_links(api_key,date)
+        get_thirty_links(api_key,date)
     else:
-        thirty_links(api_key)
+        get_thirty_links(api_key)
 
 
