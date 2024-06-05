@@ -25,10 +25,8 @@ def get_epic_photos(api_key, date ="today"):
         time=image["date"].split()[1]
         pict_date = datetime.datetime.strptime(pic_date, "%Y-%m-%d")
         pict_date = pict_date.strftime("%Y/%m/%d")
-        print(pic_date)
         img_url = f"https://api.nasa.gov/EPIC/archive/natural/{pict_date}/png/{photo}.png"
         filename=f"EPIC_{pic_date}_{counter}"
-        print(filename)
         save(img_url, filename, "EPIC",api_key)
 
 

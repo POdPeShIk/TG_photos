@@ -35,7 +35,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.date:
         date = args.date
-        print(date)
         thirty_links(api_key,date)
     else:
         thirty_links(api_key)

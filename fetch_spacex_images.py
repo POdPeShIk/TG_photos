@@ -30,7 +30,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.id:
         ids=args.id
-        print(ids)
         get_spacex_photos(api_key,ids)
     else:
         get_spacex_photos(api_key)
