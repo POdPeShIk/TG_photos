@@ -2,7 +2,7 @@ import pathlib
 import requests
 import os.path
 from urllib.parse import urlparse
-from pathlib import *
+from pathlib import Path
 
 
 def format(url):
