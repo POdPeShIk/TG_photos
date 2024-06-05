@@ -4,45 +4,71 @@
 ## Установка и запуск 
 Программа должна быть установлена с использованием менеджера пакетов, такого как pip. После установки запустите программу с помощью соответствующего скрипта.
 Клонируйте репозиторий:
-```git clone https://github.com/POdPeShIk/TG_photos```
+```
+git clone https://github.com/POdPeShIk/TG_photos
+```
 
 ## Требования 
 Программа должна работать на Python и использовать библиотеку python-telegram-bot для взаимодействия с Telegram API, а также определенные версии некоторых библиотек, которые можно найти в папке requirements.
-```pip install -r requirements.txt```
+```
+pip install -r requirements.txt
+```
 
 ## Использование 
 Программа должна принимать параметры, которые можно указать в папке .env. Указания имени канала Telegram:
-```CHAT_ID=@<имя канала>```
+```
+CHAT_ID=@<имя канала>
+```
 
 Указания времени (1 раз за указанное время будет отправляться фотография):
-```WAITING_TIME=<ваше время>``` 
+```
+WAITING_TIME=<ваше время>
+``` 
 
 Токен вашего telegram бота:
-```TELEGRAM_TOKEN=<ваш токен>```
+```
+TELEGRAM_TOKEN=<ваш токен>
+```
 
 Api_key для скачивания фотографий с сайта SpaceX(его можно сгенерировать на сайте NASA):
-```NASA_API_KEY=<ваш апи кей>```
+```
+NASA_API_KEY=<ваш апи кей>
+```
 
 Директорию откуда будет браться фото на отправление:
-```DIRECTORY=images/<директория>```
+```
+DIRECTORY=images/<директория>
+```
 
 URL бота для отправки сообщений(он постоянный):
-```URL=f'https://api.telegram.org/<токен вашего бота>/sendPhoto'```
+```
+URL=f'https://api.telegram.org/<токен вашего бота>/sendPhoto'
+```
 
 ## Примеры запуска
 tg.py:
-```python tg.py --path images/APOD/image_apod_1.jpg```
+```
+python tg.py --path images/APOD/image_apod_1.jpg
+```
 
 epic.py:
-```python epic.py --date 2023-10-2 ```
+```
+python epic.py --date 2023-10-2 
+```
 
 apod.py:
-```python apod.py --date 2023-10-2```
+```
+python apod.py --date 2023-10-2
+```
 
 fetch_spacex_images.py:
-```python fetch_spacex_images.py --id 5eb87d47ffd86e000604b38a```
+```
+python fetch_spacex_images.py --id 5eb87d47ffd86e000604b38a
+```
 
 main.py:
-```python main.py```
+```
+python main.py
+```
 
 
