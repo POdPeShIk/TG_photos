@@ -32,7 +32,7 @@ if __name__ == "__main__":
     token = os.environ['TELEGRAM_TOKEN']
     url = os.environ["URL"]
     xtime = int(os.environ["WAITING_TIME"])
-    chat_id = os.environ["CHAT_ID"]
+    chat_id = os.environ["TG_CHAT_ID"]
     bot = telegram.Bot(token=token)
     parser = argparse.ArgumentParser(
         description='Описание что делает программа'

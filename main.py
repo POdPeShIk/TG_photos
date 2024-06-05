@@ -12,7 +12,7 @@ if __name__ == "__main__":
   load_dotenv(".env")
   token = os.environ['TELEGRAM_TOKEN']
   time = int(os.environ["WAITING_TIME"])
-  chat_id = os.environ["CHAT_ID"]
+  chat_id = os.environ["TG_CHAT_ID"]
   url = os.environ["URL"]
   api_key = os.environ['NASA_API_KEY']
   directory = os.environ["DIRECTORY"]  #Выберите папку (Если хотите рандомное фото из папки)
