@@ -12,8 +12,8 @@ def send_photo(chat_id, photo_path,url):
       files = {'photo': file}
       data = {'chat_id': chat_id}
       response = requests.post(url,   files=files, data=data)
-      json_response = response.json()
-      return json_response
+      response = response.json()
+      return response
 
 
 def go(chat_id, xtime,url, directory="images/APOD/"):
