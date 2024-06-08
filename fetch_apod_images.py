@@ -17,11 +17,9 @@ def get_thirty_links(api_key, date = "today"):
         "date": date}
     links= get_links(api_key)
     links = links.json()
-    counter = 0
-    for link in links:
+    for link_number, link in enumerate(links):
         image_url = link["url"]
-        counter += 1
-        filename=f"apod_{counter}"
+        filename=f"apod_{link_number}"
         save(image_url , filename, "APOD",api_key)
 
 

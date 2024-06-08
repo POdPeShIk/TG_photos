@@ -57,12 +57,12 @@ tg.py:
 python tg.py --path images/APOD/image_apod_1.jpg
 ```
 
-epic.py:
+fetch_epic_images.py:
 ```angular2html
 python epic.py --date 2023-10-2 
 ```
 
-apod.py:
+fetch_apod_images.py:
 ```angular2html
 python apod.py --date 2023-10-2
 ```

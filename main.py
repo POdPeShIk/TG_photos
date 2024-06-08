@@ -3,8 +3,8 @@ from dotenv import load_dotenv
 
 
 from fetch_spacex_images import get_spacex_photos
-from epic import get_epic_photos
-from apod import get_thirty_links
+from fetch_epic_images import get_epic_photos
+from fetch_apod_images import get_thirty_links
 from tg import go
 
 

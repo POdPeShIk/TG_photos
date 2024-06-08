@@ -17,16 +17,14 @@ def get_epic_photos(api_key, date ="today"):
                    "date": date}
         images = requests.get(f"https://api.nasa.gov/EPIC/api/natural", params=payload)
     images=images.json()
-    counter=0
-    for image in images:
-        counter+=1
+    for image_number, image in enumerate(images):
         photo=image["image"]
         pic_date=image["date"].split()[0]
         time=image["date"].split()[1]
         pict_date = datetime.datetime.strptime(pic_date, "%Y-%m-%d")
         pict_date = pict_date.strftime("%Y/%m/%d")
         img_url = f"https://api.nasa.gov/EPIC/archive/natural/{pict_date}/png/{photo}.png"
-        filename=f"EPIC_{pic_date}_{counter}"
+        filename=f"EPIC_{pic_date}_{image_number}"
         save(img_url, filename, "EPIC",api_key)
 
 
