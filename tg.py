@@ -16,7 +16,7 @@ def send_photo(chat_id, photo_path,url):
       return response
 
 
-def go(chat_id, xtime,url, directory="images/APOD/"):
+def go(chat_id,url,xtime,directory="images/APOD/"):
     photos = os.listdir(directory)
     xtime=xtime*3600
     while True:
@@ -30,7 +30,7 @@ def go(chat_id, xtime,url, directory="images/APOD/"):
 if __name__ == "__main__":
     load_dotenv(".env")
     token = os.environ['TELEGRAM_TOKEN']
-    url = os.environ["URL"]
+    url = f'https://api.telegram.org/{token}/sendPhoto'
     xtime = int(os.environ["WAITING_TIME"])
     chat_id = os.environ["TG_CHAT_ID"]
     bot = telegram.Bot(token=token)
