@@ -17,7 +17,6 @@ def get_spacex_photos(launch_id="5eb87d47ffd86e000604b38a"):
 
 if __name__ == "__main__":
     load_dotenv(".env")
-    api_key = os.environ['NASA_API_KEY']
     parser = argparse.ArgumentParser(
         description='Описание что делает программа'
     )
