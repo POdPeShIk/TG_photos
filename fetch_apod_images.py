@@ -15,17 +15,15 @@ def get_links(api_key):
 
 
 def get_thirty_links(api_key):
-    links= get_links(api_key)
+    links = get_links(api_key)
     links = links.json()
     for link_number, link in enumerate(links):
         image_url = link["url"]
-        filename=f"apod_{link_number}"
-        save(image_url , filename, "APOD",api_key)
+        filename = f"apod_{link_number}"
+        save(image_url, filename, "APOD", api_key)
 
 
 if __name__ == "__main__":
     load_dotenv()
-    api_key=os.environ['NASA_API_KEY']
+    api_key = os.environ['NASA_API_KEY']
     get_thirty_links(api_key)
-
-

@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 
 
-def get_spacex_photos(launch_id= "5eb87d47ffd86e000604b38a"):
+def get_spacex_photos(launch_id="5eb87d47ffd86e000604b38a"):
     response = requests.get(f"https://api.spacexdata.com/v4/launches/{launch_id}")
     response.raise_for_status()
     photos = response.json()
@@ -17,14 +17,14 @@ def get_spacex_photos(launch_id= "5eb87d47ffd86e000604b38a"):
 
 if __name__ == "__main__":
     load_dotenv(".env")
-    api_key=os.environ['NASA_API_KEY']
+    api_key = os.environ['NASA_API_KEY']
     parser = argparse.ArgumentParser(
         description='Описание что делает программа'
     )
     parser.add_argument('--id', help='Ваша фамилия')
     args = parser.parse_args()
     if args.id:
-        launch_id=args.id
+        launch_id = args.id
         get_spacex_photos(launch_id)
     else:
         get_spacex_photos()
