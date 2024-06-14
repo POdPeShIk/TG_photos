@@ -5,6 +5,7 @@ import time
 import requests
 import random
 import argparse
+import logging
 
 
 def send_photo(chat_id, photo_path, url):
@@ -22,8 +23,15 @@ def go(chat_id, url, xtime, directory="images/APOD/"):
     while True:
         random.shuffle(photos)
         for photo in photos:
-            xpath = directory + photo
-            send_photo(chat_id, xpath, url)
+            try:
+               xpath = directory + photo
+               send_photo(chat_id, xpath, url)
+            except telegram.error.NetworkError as error:
+                logging.error(f"NetworkError: {error}")
+                time.sleep(30)
+            except requests.ConnectionError as error:
+                logging.error(f"ConnectionError: {error}")
+                time.sleep(30)
             time.sleep(xtime)
 
 
@@ -41,8 +49,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.path:
         path = args.path
-        print(path)
         send_photo(chat_id, path, url)
-        go(chat_id, xtime, url)
+        go(chat_id, url, xtime)
     else:
-        go(chat_id, xtime, url)
+        go(chat_id, url, xtime)
