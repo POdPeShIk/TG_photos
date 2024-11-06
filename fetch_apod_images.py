@@ -2,7 +2,7 @@ import requests
 import os
 from dotenv import load_dotenv
 
-from save_file import save
+from save_file import save_pic
 
 
 def get_links(api_key):
@@ -11,6 +11,7 @@ def get_links(api_key):
         "count": 30
     }
     links = requests.get('https://api.nasa.gov/planetary/apod', params=payload)
+    links.raise_for_status()
     return links
 
 
@@ -18,9 +19,10 @@ def get_thirty_links(api_key):
     links = get_links(api_key)
     links = links.json()
     for link_number, link in enumerate(links):
-        image_url = link["url"]
-        filename = f"apod_{link_number}"
-        save(image_url, filename, "APOD", api_key)
+        if link["media_type"] == "image":
+            image_url = link["hdurl"]
+            filename = f"apod_{link_number}"
+            save_pic(image_url, filename, "APOD", api_key)
 
 
 if __name__ == "__main__":

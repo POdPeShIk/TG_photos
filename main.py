@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from fetch_spacex_images import get_spacex_photos
 from fetch_epic_images import get_epic_photos
 from fetch_apod_images import get_thirty_links
-from tg import go
+from send_imgs_tg import start_code
 
 
 if __name__ == "__main__":
@@ -17,7 +17,7 @@ if __name__ == "__main__":
     directory = os.environ["DIRECTORY"]  # Выберите папку (Если хотите рандомное фото из папки)
     api_key = os.environ['NASA_API_KEY']
     launch_id = os.environ['LAUNCH_ID']
-    get_thirty_links(api_key)
-    get_epic_photos(api_key)
-    get_spacex_photos(launch_id)
-    go(chat_id, url, time)
+    #get_thirty_links(api_key)
+    #get_epic_photos(api_key)
+    #get_spacex_photos(launch_id)
+    start_code(chat_id, url, time)

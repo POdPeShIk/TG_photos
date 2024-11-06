@@ -1,8 +1,7 @@
 import requests
 import argparse
-from save_file import save
+from save_file import save_pic
 from dotenv import load_dotenv
-import os
 
 
 def get_spacex_photos(launch_id="5eb87d47ffd86e000604b38a"):
@@ -12,7 +11,7 @@ def get_spacex_photos(launch_id="5eb87d47ffd86e000604b38a"):
     photos = photos['links']['flickr']["original"]
     for photo_number, photo in enumerate(photos, start=1):
         filename = f"spacex_{photo_number}"
-        save(photo, filename, "SPACE_X")
+        save_pic(photo, filename, "SPACE_X")
 
 
 if __name__ == "__main__":

@@ -4,17 +4,19 @@ import os
 import argparse
 import datetime
 
-from save_file import save
+from save_file import save_pic
 
 
 def get_epic_photos(api_key, date="today"):
     if date == "today":
         payload = {"api_key": api_key}
         images = requests.get(f"https://api.nasa.gov/EPIC/api/natural/images", params=payload)
+        images.raise_for_status()
     else:
         payload = {"api_key": api_key,
                    "date": date}
         images = requests.get(f"https://api.nasa.gov/EPIC/api/natural", params=payload)
+        images.raise_for_status()
     images = images.json()
     for image_number, image in enumerate(images):
         photo = image["image"]
@@ -23,7 +25,7 @@ def get_epic_photos(api_key, date="today"):
         pict_date = pict_date.strftime("%Y/%m/%d")
         img_url = f"https://api.nasa.gov/EPIC/archive/natural/{pict_date}/png/{photo}.png"
         filename = f"EPIC_{pic_date}_{image_number}"
-        save(img_url, filename, "EPIC", api_key)
+        save_pic(img_url, filename, "EPIC", api_key)
 
 
 if __name__ == "__main__":
