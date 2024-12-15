@@ -48,17 +48,17 @@ DIRECTORY=images/<директория>
 ## Примеры запуска
 tg.py:
 ```angular2html
-python tg.py --path images/APOD/image_apod_1.jpg
+python send_imgs_tg.py --path images/APOD/image_apod_1.jpg
 ```
 
 fetch_epic_images.py:
 ```angular2html
-python epic.py --date 2023-10-2 
+python fetch_epic_images.py --date 2023-10-2 
 ```
 
 fetch_apod_images.py:
 ```angular2html
-python apod.py --date 2023-10-2
+python fetch_apod_images.py --date 2023-10-2
 ```
 
 fetch_spacex_images.py:
