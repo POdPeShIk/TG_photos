@@ -2,6 +2,7 @@ import pathlib
 import requests
 import os.path
 from urllib.parse import urlparse
+from pathlib import Path
 
 
 def get_pic_format(url):
@@ -12,7 +13,7 @@ def get_pic_format(url):
 
 
 def save_pic(url, filename, path_name, api_key=None):
-    os.makedirs(pathlib.Path(f"images/{path_name}"), exist_ok=True)
+    Path(f"images/{path_name}").mkdir(exist_ok=True)
     payload = {"api_key": api_key}
     response = requests.get(url, params=payload)
     response.raise_for_status()

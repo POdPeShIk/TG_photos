@@ -14,6 +14,7 @@ def send_photo(chat_id, photo_path):
         files = {'photo': file}
         data = {'chat_id': chat_id}
         response = requests.post(url = f'https://api.telegram.org/bot{token}/sendPhoto', data=data, files=files )
+        response.raise_for_status()
         response = response.json()
         return response
 
@@ -21,7 +22,6 @@ def send_photo(chat_id, photo_path):
 def start_code(chat_id, xtime, directory=pathlib.Path("images/APOD/")):
     photos = os.listdir(directory)
     xtime = xtime * 3600
-    print(directory)
     while True:
         random.shuffle(photos)
         for photo in photos:
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     xtime = int(os.getenv("WAITING_TIME", default=4))
     chat_id = os.environ["TG_CHAT_ID"]
     parser = argparse.ArgumentParser(
-        description='Описание что делает программа'
+        description='Отправление фотографий в тг'
     )
     parser.add_argument('--path', help='Path of photo')
     args = parser.parse_args()
