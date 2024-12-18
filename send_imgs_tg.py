@@ -1,4 +1,3 @@
-import telegram
 import pathlib
 import os
 from dotenv import load_dotenv
@@ -6,10 +5,9 @@ import time
 import requests
 import random
 import argparse
-import logging
 
 
-def send_photo(chat_id, photo_path):
+def send_photo(chat_id, photo_path, token):
     with open(photo_path, 'rb') as file:
         files = {'photo': file}
         data = {'chat_id': chat_id}
@@ -19,14 +17,14 @@ def send_photo(chat_id, photo_path):
         return response
 
 
-def start_code(chat_id, xtime, directory=pathlib.Path("images/APOD/")):
+def start_code(chat_id, xtime, token, directory=pathlib.Path("images/APOD/")):
     photos = os.listdir(directory)
     xtime = xtime * 3600
     while True:
         random.shuffle(photos)
         for photo in photos:
             xpath = pathlib.Path(directory,photo)
-            send_photo(chat_id, xpath)
+            send_photo(chat_id, xpath, token)
             time.sleep(xtime)
 
 
@@ -35,6 +33,7 @@ if __name__ == "__main__":
     token = os.environ['TELEGRAM_TOKEN']
     xtime = int(os.getenv("WAITING_TIME", default=4))
     chat_id = os.environ["TG_CHAT_ID"]
+    directory = os.getenv("DIRECTORY", default=pathlib.Path("images/APOD/"))
     parser = argparse.ArgumentParser(
         description='Отправление фотографий в тг'
     )
@@ -42,7 +41,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.path:
         path = args.path
-        send_photo(chat_id, path)
-        start_code(chat_id, xtime)
+        send_photo(chat_id, path, token)
+        start_code(chat_id, xtime, token, directory)
     else:
-        start_code(chat_id, xtime)
+        start_code(chat_id, xtime, token, directory)
